@@ -1,8 +1,12 @@
-require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
+require("dotenv").config();   // ✅ load .env once
+const connectDB = require("./database/mongoDB");
 
 const app = express();
+
+// MongoDB Connection
+connectDB();
 
 // Middleware
 app.use(cors());
