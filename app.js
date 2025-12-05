@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 require("dotenv").config();   // ✅ load .env once
 const connectDB = require("./database/mongoDB");
+const noticeRoutes = require("./routes/noticeRoute"); 
 
 const app = express();
 
@@ -11,6 +12,9 @@ connectDB();
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+// Routes
+app.use("/api/notices", noticeRoutes);
 
 // Test Route
 app.get("/", (req, res) => {
